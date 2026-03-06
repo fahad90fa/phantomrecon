@@ -1,0 +1,421 @@
+{
+  "target": "http://localhost:8081",
+  "start_time": 1772603885.6105742,
+  "end_time": 1772603925.9387474,
+  "duration": 40.32817316055298,
+  "total_requests": 5611,
+  "technologies": {
+    "Apache": {
+      "evidence": [
+        "header:server:apache"
+      ],
+      "version": "2.4.25"
+    },
+    "PHP": {
+      "evidence": [
+        "body:\\.php"
+      ],
+      "version": null
+    }
+  },
+  "ssl_info": {
+    "tls_available": false
+  },
+  "headers_analysis": {
+    "server": "Apache/2.4.25 (Debian)",
+    "powered_by": "Not disclosed",
+    "hsts": "Missing",
+    "csp": "Missing",
+    "x_frame_options": "Missing",
+    "x_content_type_options": "Missing",
+    "referrer_policy": "Missing",
+    "permissions_policy": "Missing",
+    "cors_origin": "Not set",
+    "cache_control": "no-cache, must-revalidate"
+  },
+  "findings": [
+    {
+      "title": "Sensitive File/Path Accessible: .htpasswd",
+      "severity": "critical",
+      "module": "vulns",
+      "url": "http://localhost:8081/.htpasswd",
+      "description": "Sensitive path exists but is protected (HTTP 403).",
+      "evidence": "HTTP 403",
+      "recommendation": "Restrict access to '.htpasswd'. Remove from public webroot if not needed.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603887.775114
+    },
+    {
+      "title": "Missing Content-Security-Policy Header",
+      "severity": "high",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'content-security-policy' security header.",
+      "evidence": "",
+      "recommendation": "Implement a Content-Security-Policy to prevent XSS and data injection attacks.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603885.9567869
+    },
+    {
+      "title": "HTTP PUT Method Enabled",
+      "severity": "high",
+      "module": "methods",
+      "url": "http://localhost:8081",
+      "description": "HTTP PUT method is enabled. This may allow unauthorized file uploads to the server.",
+      "evidence": "PUT method accepted at http://localhost:8081",
+      "recommendation": "Disable PUT method unless explicitly required. Implement proper authentication.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603887.064997
+    },
+    {
+      "title": "HTTP DELETE Method Enabled",
+      "severity": "high",
+      "module": "methods",
+      "url": "http://localhost:8081",
+      "description": "HTTP DELETE method is enabled. This may allow unauthorized deletion of resources.",
+      "evidence": "DELETE method accepted at http://localhost:8081",
+      "recommendation": "Disable DELETE method unless required. Implement proper authorization.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603887.0650089
+    },
+    {
+      "title": "Sensitive File/Path Accessible: .gitignore",
+      "severity": "high",
+      "module": "vulns",
+      "url": "http://localhost:8081/.gitignore",
+      "description": "Sensitive path is accessible (HTTP 200).",
+      "evidence": "config/config.inc.php\nDockerfile\n\n# Vim swap files\n.*swp",
+      "recommendation": "Restrict access to '.gitignore'. Remove from public webroot if not needed.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603887.6382747
+    },
+    {
+      "title": "Sensitive File/Path Accessible: php.ini",
+      "severity": "high",
+      "module": "vulns",
+      "url": "http://localhost:8081/php.ini",
+      "description": "Sensitive path is accessible (HTTP 200).",
+      "evidence": "; This file attempts to overwrite the original php.ini file. Doesnt always work.\r\n\r\nmagic_quotes_gpc = Off\r\nallow_url_fopen on\r\nallow_url_include on",
+      "recommendation": "Restrict access to 'php.ini'. Remove from public webroot if not needed.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603887.6652887
+    },
+    {
+      "title": "Sensitive File/Path Accessible: phpinfo.php",
+      "severity": "high",
+      "module": "vulns",
+      "url": "http://localhost:8081/phpinfo.php",
+      "description": "Sensitive path is accessible (HTTP 302).",
+      "evidence": "HTTP 302",
+      "recommendation": "Restrict access to 'phpinfo.php'. Remove from public webroot if not needed.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603887.8652868
+    },
+    {
+      "title": "Sensitive File/Path Accessible: README.md",
+      "severity": "high",
+      "module": "vulns",
+      "url": "http://localhost:8081/README.md",
+      "description": "Sensitive path is accessible (HTTP 200).",
+      "evidence": "# DAMN VULNERABLE WEB APPLICATION\r\n\r\nDamn Vulnerable Web Application (DVWA) is a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test the",
+      "recommendation": "Restrict access to 'README.md'. Remove from public webroot if not needed.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603888.0746193
+    },
+    {
+      "title": "Sensitive File/Path Accessible: CHANGELOG.md",
+      "severity": "high",
+      "module": "vulns",
+      "url": "http://localhost:8081/CHANGELOG.md",
+      "description": "Sensitive path is accessible (HTTP 200).",
+      "evidence": "DAMN VULNERABLE WEB APPLICATION\r\n=======================\r\n\r\nv1.10 (*Not Yet Released)\r\n======\r\n\r\n+ Improved IIS support. (@g0tmi1k)\r\n+ Improved setup system check. (@g0tmi1k)\r\n\r\nv1.9 (2015-10-05)\r\n===",
+      "recommendation": "Restrict access to 'CHANGELOG.md'. Remove from public webroot if not needed.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603888.0142777
+    },
+    {
+      "title": "Sensitive File/Path Accessible: robots.txt",
+      "severity": "high",
+      "module": "vulns",
+      "url": "http://localhost:8081/robots.txt",
+      "description": "Sensitive path is accessible (HTTP 200).",
+      "evidence": "User-agent: *\r\nDisallow: /",
+      "recommendation": "Restrict access to 'robots.txt'. Remove from public webroot if not needed.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603888.2756953
+    },
+    {
+      "title": "Missing X-Content-Type-Options Header",
+      "severity": "medium",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'x-content-type-options' security header.",
+      "evidence": "",
+      "recommendation": "Add 'X-Content-Type-Options: nosniff' to prevent MIME-type sniffing attacks.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603885.9567742
+    },
+    {
+      "title": "Missing X-Frame-Options Header",
+      "severity": "medium",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'x-frame-options' security header.",
+      "evidence": "",
+      "recommendation": "Add 'X-Frame-Options: DENY' or 'SAMEORIGIN' to prevent clickjacking.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603885.9567802
+    },
+    {
+      "title": "Technology Version Disclosure via Server Header",
+      "severity": "medium",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "Server discloses technology information in the 'server' header.",
+      "evidence": "Server: Apache/2.4.25 (Debian)",
+      "recommendation": "Remove or sanitize the 'server' header to prevent technology fingerprinting.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603885.9569156
+    },
+    {
+      "title": "Sensitive Page May Be Cached",
+      "severity": "medium",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "Page at sensitive URL path does not have cache-control: no-store or private.",
+      "evidence": "Cache-Control: no-cache, must-revalidate\nPragma: no-cache",
+      "recommendation": "Add 'Cache-Control: no-store, private' to sensitive pages.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603885.9569511
+    },
+    {
+      "title": "WebDAV Methods Enabled",
+      "severity": "medium",
+      "module": "methods",
+      "url": "http://localhost:8081",
+      "description": "WebDAV methods are enabled: COPY, LOCK, MKCOL, MOVE, PROPFIND, PROPPATCH, SEARCH, UNLOCK. This increases attack surface.",
+      "evidence": "WebDAV methods: COPY, LOCK, MKCOL, MOVE, PROPFIND, PROPPATCH, SEARCH, UNLOCK",
+      "recommendation": "Disable WebDAV unless required. Restrict access with authentication.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603887.0650437
+    },
+    {
+      "title": "Sensitive File/Path Accessible: server-status",
+      "severity": "medium",
+      "module": "vulns",
+      "url": "http://localhost:8081/server-status",
+      "description": "Sensitive path is accessible (HTTP 200).",
+      "evidence": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<html><head>\n<title>Apache Status</title>\n</head><body>\n<h1>Apache Server Status for localhost (via 10.0.2.100)</h1>\n\n<dl><dt>Server Version: Ap",
+      "recommendation": "Restrict access to 'server-status'. Remove from public webroot if not needed.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603888.242848
+    },
+    {
+      "title": "Clickjacking Vulnerability - Missing Frame Protection",
+      "severity": "medium",
+      "module": "vulns",
+      "url": "http://localhost:8081",
+      "description": "The page does not set X-Frame-Options or CSP frame-ancestors, making it susceptible to clickjacking.",
+      "evidence": "",
+      "recommendation": "Add 'X-Frame-Options: DENY' or CSP 'frame-ancestors none;'.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603888.740542
+    },
+    {
+      "title": "Missing Referrer-Policy Header",
+      "severity": "low",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'referrer-policy' security header.",
+      "evidence": "",
+      "recommendation": "Add 'Referrer-Policy: strict-origin-when-cross-origin' to control referrer info.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603885.956783
+    },
+    {
+      "title": "Missing Permissions-Policy Header",
+      "severity": "low",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'permissions-policy' security header.",
+      "evidence": "",
+      "recommendation": "Add a Permissions-Policy header to control browser feature access.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603885.956785
+    },
+    {
+      "title": "Sensitive File/Path Accessible: .htaccess",
+      "severity": "low",
+      "module": "vulns",
+      "url": "http://localhost:8081/.htaccess",
+      "description": "Sensitive path exists but is protected (HTTP 403).",
+      "evidence": "HTTP 403",
+      "recommendation": "Restrict access to '.htaccess'. Remove from public webroot if not needed.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603887.8245177
+    }
+  ],
+  "discovered_paths": [
+    {
+      "url": "http://localhost:8081",
+      "status_code": 200,
+      "content_length": 698,
+      "content_type": "text/html;charset=utf-8",
+      "response_time": 0.010131050999916624,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": "Login :: Damn Vulnerable Web Application (DVWA) v1.10 *Development*"
+    },
+    {
+      "url": "http://localhost:8081/login.php",
+      "status_code": 200,
+      "content_length": 698,
+      "content_type": "text/html;charset=utf-8",
+      "response_time": 0.00213264500052901,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": "Login :: Damn Vulnerable Web Application (DVWA) v1.10 *Development*"
+    },
+    {
+      "url": "http://localhost:8081/dvwa/css/login.css",
+      "status_code": 200,
+      "content_length": 406,
+      "content_type": "text/css",
+      "response_time": 0.0011222660014027497,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": null
+    },
+    {
+      "url": "http://localhost:8081/dvwa/css/login.css",
+      "status_code": 200,
+      "content_length": 406,
+      "content_type": "text/css",
+      "response_time": 0.00300376899940602,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": null
+    },
+    {
+      "url": "http://localhost:8081/login.php",
+      "status_code": 200,
+      "content_length": 699,
+      "content_type": "text/html;charset=utf-8",
+      "response_time": 0.00734076200023992,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": null
+    },
+    {
+      "url": "http://localhost:8081/docs",
+      "status_code": 200,
+      "content_length": 486,
+      "content_type": "text/html;charset=UTF-8",
+      "response_time": 0.0012496099989220966,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": "Index of /docs"
+    },
+    {
+      "url": "http://localhost:8081/README.md",
+      "status_code": 200,
+      "content_length": 9180,
+      "content_type": "text/markdown",
+      "response_time": 0.0021155040012672544,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": null
+    },
+    {
+      "url": "http://localhost:8081/CHANGELOG.md",
+      "status_code": 200,
+      "content_length": 7296,
+      "content_type": "text/markdown",
+      "response_time": 0.000995782998870709,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": null
+    },
+    {
+      "url": "http://localhost:8081/robots.txt",
+      "status_code": 200,
+      "content_length": 26,
+      "content_type": "text/plain",
+      "response_time": 0.0006667720008408651,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": null
+    },
+    {
+      "url": "http://localhost:8081/index.php",
+      "status_code": 200,
+      "content_length": 699,
+      "content_type": "text/html;charset=utf-8",
+      "response_time": 0.015057760998388403,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": "Login :: Damn Vulnerable Web Application (DVWA) v1.10 *Development*"
+    },
+    {
+      "url": "http://localhost:8081/config",
+      "status_code": 200,
+      "content_length": 469,
+      "content_type": "text/html;charset=UTF-8",
+      "response_time": 0.004756017999170581,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": "Index of /config"
+    },
+    {
+      "url": "http://localhost:8081/server-status",
+      "status_code": 200,
+      "content_length": 1459,
+      "content_type": "text/html; charset=ISO-8859-1",
+      "response_time": 0.0030087300001468975,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": "Apache Status"
+    },
+    {
+      "url": "http://localhost:8081/php.ini",
+      "status_code": 200,
+      "content_length": 148,
+      "content_type": "",
+      "response_time": 0.0006784090001019649,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": null
+    },
+    {
+      "url": "http://localhost:8081/phpinfo.php",
+      "status_code": 200,
+      "content_length": 699,
+      "content_type": "text/html;charset=utf-8",
+      "response_time": 0.010333485999581171,
+      "is_directory": false,
+      "redirect_to": null,
+      "title": "Login :: Damn Vulnerable Web Application (DVWA) v1.10 *Development*"
+    }
+  ],
+  "errors": []
+}

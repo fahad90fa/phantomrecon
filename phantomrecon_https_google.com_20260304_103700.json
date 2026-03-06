@@ -1,0 +1,121 @@
+{
+  "target": "https://google.com",
+  "start_time": 1772602620.012854,
+  "end_time": 1772602632.4695485,
+  "duration": 12.45669436454773,
+  "total_requests": 1,
+  "technologies": {},
+  "ssl_info": {},
+  "headers_analysis": {
+    "server": "gws",
+    "powered_by": "Not disclosed",
+    "hsts": "max-age=31536000",
+    "csp": "Missing",
+    "x_frame_options": "SAMEORIGIN",
+    "x_content_type_options": "Missing",
+    "referrer_policy": "Missing",
+    "permissions_policy": "Missing",
+    "cors_origin": "Not set",
+    "cache_control": "private, max-age=0"
+  },
+  "findings": [
+    {
+      "title": "Missing Content-Security-Policy Header",
+      "severity": "high",
+      "module": "headers",
+      "url": "https://www.google.com/",
+      "description": "The response does not include the 'content-security-policy' security header.",
+      "evidence": "",
+      "recommendation": "Implement a Content-Security-Policy to prevent XSS and data injection attacks.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772602632.2178435
+    },
+    {
+      "title": "Missing X-Content-Type-Options Header",
+      "severity": "medium",
+      "module": "headers",
+      "url": "https://www.google.com/",
+      "description": "The response does not include the 'x-content-type-options' security header.",
+      "evidence": "",
+      "recommendation": "Add 'X-Content-Type-Options: nosniff' to prevent MIME-type sniffing attacks.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772602632.2178364
+    },
+    {
+      "title": "Cookie Without HttpOnly Flag: __Secure-STRP",
+      "severity": "medium",
+      "module": "headers",
+      "url": "https://www.google.com/",
+      "description": "Cookie is missing the HttpOnly flag; it is accessible via JavaScript (XSS risk).",
+      "evidence": "__Secure-STRP=AD6DogvH3hNuWQUOFXQ5xX5D1xnNHirt2N3R2G8-OoCXPQS1ITlB8UcMTLsTQWnaj9O4vCMA_Mi6cdMLBoor6BnHgSWT-EOPG-zF; expires=Wed, 04-Mar-2026 05:42:11 GMT; path=/; domain=.google.com; Secure; SameSite=",
+      "recommendation": "Add the HttpOnly attribute to prevent JavaScript access to cookies.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772602632.2180312
+    },
+    {
+      "title": "Missing Referrer-Policy Header",
+      "severity": "low",
+      "module": "headers",
+      "url": "https://www.google.com/",
+      "description": "The response does not include the 'referrer-policy' security header.",
+      "evidence": "",
+      "recommendation": "Add 'Referrer-Policy: strict-origin-when-cross-origin' to control referrer info.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772602632.2178407
+    },
+    {
+      "title": "Missing Permissions-Policy Header",
+      "severity": "low",
+      "module": "headers",
+      "url": "https://www.google.com/",
+      "description": "The response does not include the 'permissions-policy' security header.",
+      "evidence": "",
+      "recommendation": "Add a Permissions-Policy header to control browser feature access.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772602632.217842
+    },
+    {
+      "title": "X-XSS-Protection Disabled",
+      "severity": "low",
+      "module": "headers",
+      "url": "https://www.google.com/",
+      "description": "X-XSS-Protection is explicitly disabled.",
+      "evidence": "X-XSS-Protection: 0",
+      "recommendation": "Remove this header or set to '1; mode=block'. Rely on CSP instead.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772602632.2178502
+    },
+    {
+      "title": "Technology Disclosure via Server Header",
+      "severity": "low",
+      "module": "headers",
+      "url": "https://www.google.com/",
+      "description": "Server discloses technology information in the 'server' header.",
+      "evidence": "Server: gws",
+      "recommendation": "Remove or sanitize the 'server' header to prevent technology fingerprinting.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772602632.2179313
+    },
+    {
+      "title": "HSTS Missing includeSubDomains",
+      "severity": "low",
+      "module": "headers",
+      "url": "https://www.google.com/",
+      "description": "HSTS does not include the 'includeSubDomains' directive.",
+      "evidence": "Strict-Transport-Security: max-age=31536000",
+      "recommendation": "Add 'includeSubDomains' to protect all subdomains.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772602632.218016
+    }
+  ],
+  "discovered_paths": [],
+  "errors": []
+}

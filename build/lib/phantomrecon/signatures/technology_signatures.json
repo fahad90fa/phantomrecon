@@ -1,0 +1,149 @@
+{
+  "version": "1.0.0",
+  "description": "Technology detection signatures",
+  "technologies": {
+    "WordPress": {
+      "headers": [{"header": "x-powered-by", "pattern": "wordpress"}],
+      "body": ["wp-content/", "wp-includes/", "WordPress"],
+      "cookies": ["wordpress_", "wp-settings-"],
+      "meta": ["generator.*WordPress"],
+      "category": "CMS"
+    },
+    "Joomla": {
+      "headers": [],
+      "body": ["/components/com_", "Joomla!", "/media/jui/"],
+      "meta": ["generator.*Joomla"],
+      "category": "CMS"
+    },
+    "Drupal": {
+      "headers": [{"header": "x-drupal-cache", "pattern": ".*"}, {"header": "x-generator", "pattern": "drupal"}],
+      "body": ["/sites/default/files/", "Drupal.settings", "/misc/drupal.js"],
+      "meta": ["generator.*Drupal"],
+      "cookies": ["SESS", "DrupalVisitor"],
+      "category": "CMS"
+    },
+    "Magento": {
+      "body": ["Mage.Cookies", "/skin/frontend/", "Magento"],
+      "cookies": ["frontend", "adminhtml"],
+      "category": "E-commerce"
+    },
+    "Shopify": {
+      "body": ["cdn.shopify.com", "Shopify.theme"],
+      "headers": [{"header": "x-shopify-stage", "pattern": ".*"}],
+      "category": "E-commerce"
+    },
+    "WooCommerce": {
+      "body": ["woocommerce", "wc-ajax", "add-to-cart"],
+      "cookies": ["woocommerce_"],
+      "category": "E-commerce"
+    },
+    "Laravel": {
+      "body": ["Laravel"],
+      "cookies": ["laravel_session", "XSRF-TOKEN"],
+      "category": "Framework"
+    },
+    "Django": {
+      "body": ["csrfmiddlewaretoken"],
+      "cookies": ["csrftoken", "sessionid"],
+      "category": "Framework"
+    },
+    "Ruby on Rails": {
+      "body": ["authenticity_token"],
+      "headers": [{"header": "x-runtime", "pattern": ".*"}, {"header": "x-request-id", "pattern": ".*"}],
+      "category": "Framework"
+    },
+    "ASP.NET": {
+      "headers": [{"header": "x-aspnet-version", "pattern": ".*"}, {"header": "x-powered-by", "pattern": "asp.net"}],
+      "cookies": ["ASP.NET_SessionId", "ASPSESSIONID"],
+      "category": "Framework"
+    },
+    "Spring Boot": {
+      "headers": [{"header": "x-application-context", "pattern": ".*"}],
+      "body": ["whitelabel error page", "spring", "org.springframework"],
+      "category": "Framework"
+    },
+    "Express.js": {
+      "headers": [{"header": "x-powered-by", "pattern": "express"}],
+      "category": "Framework"
+    },
+    "Next.js": {
+      "body": ["__NEXT_DATA__", "_next/static"],
+      "headers": [{"header": "x-powered-by", "pattern": "next.js"}],
+      "category": "Framework"
+    },
+    "Nuxt.js": {
+      "body": ["__NUXT__", "_nuxt/"],
+      "headers": [{"header": "x-powered-by", "pattern": "nuxt.js"}],
+      "category": "Framework"
+    },
+    "React": {
+      "body": ["__REACT_FIBER__", "react-app", "data-reactroot", "__reactFiber"],
+      "category": "JavaScript"
+    },
+    "Angular": {
+      "body": ["ng-version=", "angular.js", "ng-controller", "ng-app"],
+      "category": "JavaScript"
+    },
+    "Vue.js": {
+      "body": ["__vue__", "vue.js", "v-bind:", "v-on:"],
+      "category": "JavaScript"
+    },
+    "jQuery": {
+      "body": ["jquery.[\\d]", "jQuery.fn.jquery"],
+      "category": "JavaScript"
+    },
+    "Bootstrap": {
+      "body": ["bootstrap.min.css", "bootstrap.min.js"],
+      "category": "CSS Framework"
+    },
+    "Tailwind CSS": {
+      "body": ["tailwindcss", "tailwind.css"],
+      "category": "CSS Framework"
+    },
+    "Apache": {
+      "headers": [{"header": "server", "pattern": "apache"}],
+      "category": "Web Server"
+    },
+    "Nginx": {
+      "headers": [{"header": "server", "pattern": "nginx"}],
+      "category": "Web Server"
+    },
+    "IIS": {
+      "headers": [{"header": "server", "pattern": "microsoft-iis"}, {"header": "x-powered-by", "pattern": "asp.net"}],
+      "category": "Web Server"
+    },
+    "Tomcat": {
+      "headers": [{"header": "server", "pattern": "apache-coyote|tomcat"}],
+      "body": ["apache tomcat", "org.apache.catalina"],
+      "category": "Application Server"
+    },
+    "PHP": {
+      "headers": [{"header": "x-powered-by", "pattern": "php"}],
+      "category": "Language"
+    },
+    "Python": {
+      "headers": [{"header": "server", "pattern": "python|werkzeug|gunicorn|uvicorn"}],
+      "category": "Language"
+    },
+    "Node.js": {
+      "headers": [{"header": "x-powered-by", "pattern": "node.js|express"}],
+      "category": "Language"
+    },
+    "Cloudflare": {
+      "headers": [{"header": "cf-ray", "pattern": ".*"}, {"header": "server", "pattern": "cloudflare"}],
+      "category": "CDN"
+    },
+    "AWS CloudFront": {
+      "headers": [{"header": "x-amz-cf-id", "pattern": ".*"}, {"header": "via", "pattern": "cloudfront"}],
+      "category": "CDN"
+    },
+    "Google Analytics": {
+      "body": ["google-analytics.com/analytics.js", "gtag\\(", "GoogleAnalyticsObject"],
+      "category": "Analytics"
+    },
+    "Google Tag Manager": {
+      "body": ["googletagmanager.com/gtm.js", "GTM-"],
+      "category": "Analytics"
+    }
+  }
+}

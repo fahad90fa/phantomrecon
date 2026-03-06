@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhantomRecon Report - https://example.com</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+  header { background: linear-gradient(135deg, #161b22, #21262d); border: 1px solid #30363d; border-radius: 12px; padding: 30px; margin-bottom: 24px; }
+  header h1 { font-size: 2rem; color: #58a6ff; margin-bottom: 8px; }
+  header .meta { color: #8b949e; font-size: 0.9rem; }
+  header .target { font-size: 1.1rem; color: #e6edf3; margin-top: 8px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; text-align: center; }
+  .stat-card .value { font-size: 2rem; font-weight: bold; }
+  .stat-card .label { color: #8b949e; font-size: 0.85rem; margin-top: 4px; }
+  .stat-critical .value { color: #dc3545; }
+  .stat-high .value { color: #fd7e14; }
+  .stat-medium .value { color: #ffc107; }
+  .stat-low .value { color: #0dcaf0; }
+  .stat-info .value { color: #6c757d; }
+  .stat-total .value { color: #58a6ff; }
+  section { background: #161b22; border: 1px solid #30363d; border-radius: 8px; margin-bottom: 24px; overflow: hidden; }
+  section h2 { background: #21262d; padding: 16px 20px; font-size: 1.1rem; color: #e6edf3; border-bottom: 1px solid #30363d; }
+  .finding { border-bottom: 1px solid #21262d; padding: 16px 20px; }
+  .finding:last-child { border-bottom: none; }
+  .finding-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; white-space: nowrap; }
+  .badge-critical { background: #dc354520; color: #dc3545; border: 1px solid #dc354540; }
+  .badge-high { background: #fd7e1420; color: #fd7e14; border: 1px solid #fd7e1440; }
+  .badge-medium { background: #ffc10720; color: #ffc107; border: 1px solid #ffc10740; }
+  .badge-low { background: #0dcaf020; color: #0dcaf0; border: 1px solid #0dcaf040; }
+  .badge-info { background: #6c757d20; color: #8b949e; border: 1px solid #6c757d40; }
+  .finding-title { font-size: 1rem; color: #e6edf3; font-weight: 500; }
+  .finding-url { font-size: 0.8rem; color: #58a6ff; word-break: break-all; margin-bottom: 8px; }
+  .finding-desc { color: #8b949e; font-size: 0.9rem; margin-bottom: 8px; }
+  .finding-evidence { background: #0d1117; border: 1px solid #30363d; border-radius: 4px; padding: 10px; font-family: monospace; font-size: 0.8rem; color: #79c0ff; margin-bottom: 8px; white-space: pre-wrap; word-break: break-all; }
+  .finding-rec { color: #3fb950; font-size: 0.85rem; padding: 8px 12px; background: #3fb95010; border-left: 3px solid #3fb950; border-radius: 0 4px 4px 0; }
+  .paths-table { width: 100%; border-collapse: collapse; }
+  .paths-table th { background: #21262d; padding: 10px 16px; text-align: left; font-size: 0.85rem; color: #8b949e; }
+  .paths-table td { padding: 8px 16px; border-top: 1px solid #21262d; font-size: 0.85rem; }
+  .paths-table tr:hover td { background: #21262d40; }
+  .status-2xx { color: #3fb950; }
+  .status-3xx { color: #ffc107; }
+  .status-4xx { color: #8b949e; }
+  .status-5xx { color: #dc3545; }
+  .tech-grid { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 20px; }
+  .tech-badge { background: #21262d; border: 1px solid #30363d; border-radius: 20px; padding: 4px 14px; font-size: 0.85rem; color: #79c0ff; }
+  .empty { color: #6c757d; text-align: center; padding: 24px; }
+  footer { text-align: center; color: #6c757d; font-size: 0.8rem; padding: 20px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>&#x1F4CB; PhantomRecon Report</h1>
+    <div class="target">Target: <strong>https://example.com</strong></div>
+    <div class="meta">
+      Generated: 2026-03-05 12:36:39 &nbsp;|&nbsp;
+      Duration: 5.8s &nbsp;|&nbsp;
+      Total Requests: 1 &nbsp;|&nbsp;
+      Paths Discovered: 0
+    </div>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-card stat-total"><div class="value">8</div><div class="label">Total Findings</div></div>
+    <div class="stat-card stat-critical"><div class="value">0</div><div class="label">Critical</div></div>
+    <div class="stat-card stat-high"><div class="value">2</div><div class="label">High</div></div>
+    <div class="stat-card stat-medium"><div class="value">2</div><div class="label">Medium</div></div>
+    <div class="stat-card stat-low"><div class="value">4</div><div class="label">Low</div></div>
+    <div class="stat-card stat-info"><div class="value">0</div><div class="label">Info</div></div>
+  </div>
+
+  
+  <section>
+    <h2>&#x1F50D; Detected Technologies</h2>
+    <div class="tech-grid">
+      <span class="tech-badge">Cloudflare</span>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>&#x26A0; Findings (8)</h2>
+    
+      
+      <div class="finding">
+        <div class="finding-header">
+          <span class="badge badge-high">high</span>
+          <span class="finding-title">Missing Content-Security-Policy Header</span>
+        </div>
+        <div class="finding-url">https://example.com</div>
+        <div class="finding-desc">The response does not include the 'content-security-policy' security header.</div>
+        
+        
+        <div class="finding-rec">&#x2714; Implement a Content-Security-Policy to prevent XSS and data injection attacks.</div>
+        
+      </div>
+      
+      <div class="finding">
+        <div class="finding-header">
+          <span class="badge badge-high">high</span>
+          <span class="finding-title">Missing HTTP Strict Transport Security (HSTS)</span>
+        </div>
+        <div class="finding-url">https://example.com</div>
+        <div class="finding-desc">HSTS header not found on HTTPS site.</div>
+        
+        
+        <div class="finding-rec">&#x2714; Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload'</div>
+        
+      </div>
+      
+      <div class="finding">
+        <div class="finding-header">
+          <span class="badge badge-medium">medium</span>
+          <span class="finding-title">Missing X-Content-Type-Options Header</span>
+        </div>
+        <div class="finding-url">https://example.com</div>
+        <div class="finding-desc">The response does not include the 'x-content-type-options' security header.</div>
+        
+        
+        <div class="finding-rec">&#x2714; Add 'X-Content-Type-Options: nosniff' to prevent MIME-type sniffing attacks.</div>
+        
+      </div>
+      
+      <div class="finding">
+        <div class="finding-header">
+          <span class="badge badge-medium">medium</span>
+          <span class="finding-title">Missing X-Frame-Options Header</span>
+        </div>
+        <div class="finding-url">https://example.com</div>
+        <div class="finding-desc">The response does not include the 'x-frame-options' security header.</div>
+        
+        
+        <div class="finding-rec">&#x2714; Add 'X-Frame-Options: DENY' or 'SAMEORIGIN' to prevent clickjacking.</div>
+        
+      </div>
+      
+      <div class="finding">
+        <div class="finding-header">
+          <span class="badge badge-low">low</span>
+          <span class="finding-title">Missing Referrer-Policy Header</span>
+        </div>
+        <div class="finding-url">https://example.com</div>
+        <div class="finding-desc">The response does not include the 'referrer-policy' security header.</div>
+        
+        
+        <div class="finding-rec">&#x2714; Add 'Referrer-Policy: strict-origin-when-cross-origin' to control referrer info.</div>
+        
+      </div>
+      
+      <div class="finding">
+        <div class="finding-header">
+          <span class="badge badge-low">low</span>
+          <span class="finding-title">Missing Permissions-Policy Header</span>
+        </div>
+        <div class="finding-url">https://example.com</div>
+        <div class="finding-desc">The response does not include the 'permissions-policy' security header.</div>
+        
+        
+        <div class="finding-rec">&#x2714; Add a Permissions-Policy header to control browser feature access.</div>
+        
+      </div>
+      
+      <div class="finding">
+        <div class="finding-header">
+          <span class="badge badge-low">low</span>
+          <span class="finding-title">Technology Disclosure via Server Header</span>
+        </div>
+        <div class="finding-url">https://example.com</div>
+        <div class="finding-desc">Server discloses technology information in the 'server' header.</div>
+        
+        <div class="finding-evidence">Server: cloudflare</div>
+        
+        
+        <div class="finding-rec">&#x2714; Remove or sanitize the 'server' header to prevent technology fingerprinting.</div>
+        
+      </div>
+      
+      <div class="finding">
+        <div class="finding-header">
+          <span class="badge badge-low">low</span>
+          <span class="finding-title">Content-Type Missing Charset</span>
+        </div>
+        <div class="finding-url">https://example.com</div>
+        <div class="finding-desc">HTML response Content-Type does not specify charset (potential XSS vector).</div>
+        
+        <div class="finding-evidence">Content-Type: text/html</div>
+        
+        
+        <div class="finding-rec">&#x2714; Set 'Content-Type: text/html; charset=UTF-8'.</div>
+        
+      </div>
+      
+    
+  </section>
+
+  
+
+  
+
+  <footer>PhantomRecon &mdash; Authorized Penetration Testing Tool</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "target": "https://http://localhost:8081",
+  "start_time": 1772603833.195197,
+  "end_time": 1772603841.742294,
+  "duration": 8.547096967697144,
+  "total_requests": 0,
+  "technologies": {},
+  "ssl_info": {},
+  "headers_analysis": {},
+  "findings": [],
+  "discovered_paths": [],
+  "errors": [
+    "Failed to connect to target: connection_error: Cannot connect to host http:443 ssl:False [Name or service not known]"
+  ]
+}

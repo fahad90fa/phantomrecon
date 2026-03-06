@@ -1,0 +1,3 @@
+[console_scripts]
+phantomrecon = phantomrecon.cli:run
+phantomrecon-gui = phantomrecon.gui:run_gui

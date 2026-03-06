@@ -1,0 +1,13 @@
+{
+  "target": "https://target.example.com",
+  "scan_id": "75cca7dc",
+  "started_at": 1772603681.4318323,
+  "updated_at": 1772603681.4318361,
+  "completed_modules": [],
+  "pending_paths": [],
+  "scanned_paths": [],
+  "findings_count": 0,
+  "discovered_paths_count": 0,
+  "total_requests": 0,
+  "partial_results": {}
+}

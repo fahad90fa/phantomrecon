@@ -1,0 +1,124 @@
+{
+  "target": "http://localhost:8081",
+  "start_time": 1772603862.5093887,
+  "end_time": 1772603868.045104,
+  "duration": 5.535715341567993,
+  "total_requests": 1,
+  "technologies": {
+    "Apache": {
+      "evidence": [
+        "header:server:apache"
+      ],
+      "version": "2.4.25"
+    },
+    "PHP": {
+      "evidence": [
+        "body:\\.php"
+      ],
+      "version": null
+    }
+  },
+  "ssl_info": {
+    "tls_available": false
+  },
+  "headers_analysis": {
+    "server": "Apache/2.4.25 (Debian)",
+    "powered_by": "Not disclosed",
+    "hsts": "Missing",
+    "csp": "Missing",
+    "x_frame_options": "Missing",
+    "x_content_type_options": "Missing",
+    "referrer_policy": "Missing",
+    "permissions_policy": "Missing",
+    "cors_origin": "Not set",
+    "cache_control": "no-cache, must-revalidate"
+  },
+  "findings": [
+    {
+      "title": "Missing Content-Security-Policy Header",
+      "severity": "high",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'content-security-policy' security header.",
+      "evidence": "",
+      "recommendation": "Implement a Content-Security-Policy to prevent XSS and data injection attacks.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603867.7911823
+    },
+    {
+      "title": "Missing X-Content-Type-Options Header",
+      "severity": "medium",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'x-content-type-options' security header.",
+      "evidence": "",
+      "recommendation": "Add 'X-Content-Type-Options: nosniff' to prevent MIME-type sniffing attacks.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603867.791165
+    },
+    {
+      "title": "Missing X-Frame-Options Header",
+      "severity": "medium",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'x-frame-options' security header.",
+      "evidence": "",
+      "recommendation": "Add 'X-Frame-Options: DENY' or 'SAMEORIGIN' to prevent clickjacking.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603867.791174
+    },
+    {
+      "title": "Technology Version Disclosure via Server Header",
+      "severity": "medium",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "Server discloses technology information in the 'server' header.",
+      "evidence": "Server: Apache/2.4.25 (Debian)",
+      "recommendation": "Remove or sanitize the 'server' header to prevent technology fingerprinting.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603867.7914033
+    },
+    {
+      "title": "Sensitive Page May Be Cached",
+      "severity": "medium",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "Page at sensitive URL path does not have cache-control: no-store or private.",
+      "evidence": "Cache-Control: no-cache, must-revalidate\nPragma: no-cache",
+      "recommendation": "Add 'Cache-Control: no-store, private' to sensitive pages.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603867.7914634
+    },
+    {
+      "title": "Missing Referrer-Policy Header",
+      "severity": "low",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'referrer-policy' security header.",
+      "evidence": "",
+      "recommendation": "Add 'Referrer-Policy: strict-origin-when-cross-origin' to control referrer info.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603867.7911775
+    },
+    {
+      "title": "Missing Permissions-Policy Header",
+      "severity": "low",
+      "module": "headers",
+      "url": "http://localhost:8081/login.php",
+      "description": "The response does not include the 'permissions-policy' security header.",
+      "evidence": "",
+      "recommendation": "Add a Permissions-Policy header to control browser feature access.",
+      "cve": null,
+      "cvss": null,
+      "timestamp": 1772603867.7911797
+    }
+  ],
+  "discovered_paths": [],
+  "errors": []
+}
