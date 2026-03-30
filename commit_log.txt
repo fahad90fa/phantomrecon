@@ -20,3 +20,4 @@
 - [2026-03-30 13:38:02] updated dependencies
 - [2026-03-30 13:38:02] improved security
 - [2026-03-30 13:38:03] code cleanup
+- [2026-03-30 13:38:03] documentation update
