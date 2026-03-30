@@ -124,3 +124,4 @@
 - [2026-03-30 14:19:03] updated dependencies
 - [2026-03-30 14:19:04] enhanced features
 - [2026-03-30 14:19:04] code cleanup
+- [2026-03-30 14:19:04] documentation update
