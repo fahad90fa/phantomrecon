@@ -109,3 +109,4 @@
 - [2026-03-30 13:38:48] updated dependencies
 - [2026-03-30 13:38:48] improved security
 - [2026-03-30 13:41:40] improved security
+- [2026-03-30 13:41:41] code cleanup
